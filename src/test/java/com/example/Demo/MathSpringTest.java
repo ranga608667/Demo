@@ -10,18 +10,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(MyFirstAPIController.class)
-
-public class MyFirstAPIControllerTest {
+@WebMvcTest(MathSpring.class)
+public class MathSpringTest {
     @Autowired
     private MockMvc mvc;
 
     @Test
-    public void testMyFirstEndPoint() throws Exception {
-        RequestBuilder Request1=get("/myApp");
+    public void mathAPITest() throws Exception{
+       RequestBuilder Request1= get("/math/api");
         this.mvc.perform(Request1)
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello World"));
+                .andExpect(content().string("3.141592653589793"));
     }
 
 }
