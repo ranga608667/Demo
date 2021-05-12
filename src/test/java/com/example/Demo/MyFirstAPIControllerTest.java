@@ -24,4 +24,12 @@ public class MyFirstAPIControllerTest {
                 .andExpect(content().string("Hello World"));
     }
 
+    @Test
+    public void testMyFirstQueryString() throws Exception {
+        RequestBuilder Request1=get("/myApp/QSexample?first=Rangajan&last=Murugan");
+        this.mvc.perform(Request1)
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello Rangajan Murugan"));
+    }
+
 }
