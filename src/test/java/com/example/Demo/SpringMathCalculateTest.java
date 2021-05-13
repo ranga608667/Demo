@@ -21,51 +21,51 @@ public class SpringMathCalculateTest {
 
     @Test
     public void mathAdd() throws Exception{
-        RequestBuilder request=get("/math/calculate?operation=add&x=4&y=6");
+        RequestBuilder request=get("/math/calculate?operation=add&n=30&n=5&n=10");
                 //?operation=add&x=4&y=6"
         this.mvc.perform(request).andExpect(status().isOk())
-        .andExpect(content().string("4 + 6 = 10"));
+        .andExpect(content().string("Sum = 45"));
     }
 
     @Test
     public void mathSub() throws Exception{
-        RequestBuilder request=get("/math/calculate?operation=subtract&x=4&y=6");
+        RequestBuilder request=get("/math/calculate?operation=subtract&n=30&n=5&n=10");
         //?operation=add&x=4&y=6"
         this.mvc.perform(request).andExpect(status().isOk())
-                .andExpect(content().string("4 - 6 = -2"));
+                .andExpect(content().string("subtract = 15"));
     }
 
     @Test
     public void mathMult() throws Exception{
-        RequestBuilder request=get("/math/calculate?operation=multiply&x=4&y=6");
+        RequestBuilder request=get("/math/calculate?operation=multiply&n=30&n=5&n=10");
         //?operation=add&x=4&y=6"
         this.mvc.perform(request).andExpect(status().isOk())
-                .andExpect(content().string("4 * 6 = 24"));
+                .andExpect(content().string("Multiply =  1500"));
     }
 
     @Test
     public void mathDiv() throws Exception{
-        RequestBuilder request=get("/math/calculate?operation=divide&x=30&y=5");
+        RequestBuilder request=get("/math/calculate?operation=divide&n=100&n=2&n=10");
         //?operation=add&x=4&y=6"
         this.mvc.perform(request).andExpect(status().isOk())
-                .andExpect(content().string("30 / 5 = 6"));
+                .andExpect(content().string("Divide = 5"));
     }
 
     @Test
     public void mathSum() throws Exception{
-        RequestBuilder request=get("/math/calculate?x=30&y=5");
+        RequestBuilder request=get("/math/calculate?&n=30&n=5");
         //?operation=add&x=4&y=6"
         this.mvc.perform(request).andExpect(status().isOk())
-                .andExpect(content().string("30 + 5 = 35"));
+                .andExpect(content().string("Sum = 35"));
     }
-
-    @Test
-    public void mathSumNums() throws Exception{
-        RequestBuilder request=get("/math/sum?n=30&n=5&n=10");
-        //?operation=add&x=4&y=6"
-        this.mvc.perform(request).andExpect(status().isOk())
-                .andExpect(content().string("sum = 45"));
-    }
+//
+//    @Test
+//    public void mathSumNums() throws Exception{
+//        RequestBuilder request=get("/math/sum?n=30&n=5&n=10");
+//        //?operation=add&x=4&y=6"
+//        this.mvc.perform(request).andExpect(status().isOk())
+//                .andExpect(content().string("sum = 45"));
+//    }
 
 }
 

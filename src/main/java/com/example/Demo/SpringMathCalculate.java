@@ -9,29 +9,32 @@ public class SpringMathCalculate {
 
     @GetMapping("/math/calculate")
 
-        public String mathCal(@RequestParam (required = false, defaultValue = "add") String operation,@RequestParam int x, @RequestParam int y){
-        if (operation.equals("add")){
-            return x + " + "  + y + " = " + (x+y);
+    public String mathCal(@RequestParam(required = false, defaultValue = "add") String operation, @RequestParam int... n) {
+        if (operation.equals("add")) {
+            int x = 0;
+            for (int s : n) {
+                x = x + s;
+            }
+            return "Sum = " + x;
         } else if (operation.equals("multiply")) {
-             return x + " * "  + y + " = " + x*y;
+            int y = 1;
+            for (int s : n) {
+                y = y * s;
+            }
+            return "Multiply =  " + y;
         } else if (operation.equals("subtract")) {
-          //  int c=x-y;
-            return x + " - "  + y + " = " + (x-y);
+            int z = n[0];
+            for (int i = 1; i < n.length; i++) {
+                z = z - n[i];
+            }
+            return "subtract = " + z;
         } else {
-          return x + " / "  + y + " = " + x/y;
+            int div = n[0];
+            for (int i = 1; i < n.length; i++) {
+                div = div / n[i];
+            }
+            return "Divide = " + div;
         }
     }
-
-
-    @GetMapping("/math/sum")
-    public  String mathSum (@RequestParam int... n ){
-      int x=0;
-      int l=n.length;
-        for (int s:n){
-            x=x+s;
-        }
-
-             return "sum = " + x;
-    }
-
 }
+
